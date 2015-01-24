@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>chat</title>
+<link rel="stylesheet" href="chat.css" />
+<link rel="stylesheet" href="bubble.css" />
+<script src="jquery-1.11.2.min.js"></script>
+</head>
+<body>
+</body>
+<script>
+	function otakuChat(arg){
+		if (!arg) {
+			var arg = {};
+			arg.ot = {};
+			arg.ot.c = '#1CE8FF';
+			arg.ot.f = 'impact';
+			arg.ot.s = '3px';
+			arg.height = '100%';
+			arg.width = '100%';
+			arg.bs = '1px gray solid';
+			arg.user = "#";
+			arg.cbg = '#000000';
+			arg.mcbg = '#FFFFFF';
+			arg.m ={};
+			arg.u = {};
+			arg.u.c = 'red';
+			arg.u.s = '3px';
+			arg.u.f = 'imapct';
+			arg.m.c = 'blue';
+			arg.m.s = '3px';
+			arg.m.f = 'impact';
+			
+		} else {
+			var arg = arg;
+		}
+		
+		$('body').append('<div id="otakuchat"></div>');
+		$('#otakuchat').append('<div id="box"></div>');
+		$('#box').append('<span style="color: '+arg.ot.c+'; size: '+arg.ot.s+'; font-family: '+ arg.ot.f+'; margin-top: 0; top:54px; margin-bottom: 0;"><span id="gtitle">this is the title</span><br><span id="gdesc">This is the description</span></span>');
+		$('#box').append('<div id="msg" class="wrap" style="border: ' + arg.bs + ';"></div>');
+		$('#box').append('<div id="inp"><input type="text" id="smsg" style="background-color: ' + arg.mcbg + '; width: 80%; height: 3%; color: '+ arg.m.c + '; size: '+ arg.m.s + '; font-family: '+arg.m.f + '" /><button id="sbtn" style="background-color: ' + arg.mcbg + '; width: 15%; height: 30px; color: '+arg.m.c+'; font-family: '+arg.m.f+'; size: '+arg.m.s +'; border: ' + arg.bs + '">Send!</button></div>');
+		$("#msg").append('<div id="MSG" class="cell"></div>');
+		var mgr = {}; //local object
+		mgr.get = {}; //get objects
+		mgr.set = {}; //sets stuff (set functions)
+		mgr.get.base = $('#otakuchat'); //embed div
+		mgr.get.base.height(arg.height);
+		mgr.get.base.width(arg.width);
+		mgr.get.box = $('#box'); //chat box
+		mgr.get._msg = $('#MSG');
+		mgr.get.box.height(arg.height);
+		mgr.get.box.width(arg.width);
+		mgr.get.msg = $('#msg'); // message container
+		mgr.get.msg.css('height', '80%');
+		mgr.get.msg.css('background-color', arg.mcbg);
+		mgr.get.box.css('background-color', arg.cbg);
+		$('body').css('background-color', arg.cbg);
+		mgr.set.message = function(user, msgid, msg) {
+		// creates the msg
+			var url = "http://fp.chatango.com/profileimg/"+user[0]+"/"+user[1]+"/"+user+"/thumb.jpg";
+			var makeMessage = '<span><div id="'+msgid+'" name="'+user+'"><div class="otakuchat-bubble otakuchat-green"><font color="'+arg.u.c+'" size="'+arg.u.s+'" family="'+arg.u.f+'"><u><b>'+user+'</b></u></font></font></font>: <font color="'+arg.m.c+'" size="'+arg.m.s+'" family="'+arg.m.f+'">' + msg + '</div></div></font></font></font></div></span>';
+		mgr.get._msg.append(makeMessage);
+		}
+		
+		
+		
+	//on enter
+	$('#smsg').keypress(function(e) {
+		var key = (e.keyCode ? e.keyCode : e.which);
+		if (key == '13') {
+			if(!$('#smsg').val() == '') {
+				mgr.set.message('suzu', 0, $('#smsg').val());
+				$('#smsg').val('');
+			}
+		}
+	});
+	}
+	
+</script>
+
+<script>
+var arg = {};
+arg.ot = {};
+arg.ot.c = '#1CE8FF';
+arg.ot.f = 'comic';
+arg.ot.s = '3px';
+arg.height = '100%';
+arg.width = '100%';
+arg.user = "#";
+arg.cbg = '#000';
+arg.mcbg = '#000';
+arg.bs = '1px gray solid';
+arg.m ={};
+arg.u = {};
+arg.u.c = 'red';
+arg.u.s = '1%';
+arg.u.f = 'imapct';
+arg.m.c = 'blue';
+arg.m.s = '3px';
+arg.m.f = 'impact';
+ var c = new otakuChat(arg)</script>
+
+</html>

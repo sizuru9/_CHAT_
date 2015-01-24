@@ -1,0 +1,1 @@
+can't get the chat messages to start on the bottom and have the y-axis scrollbar 

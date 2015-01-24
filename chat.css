@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* EMBED STYLE SHEET */
+
+html {
+	height:100%;
+	width:100%;
+	margin: 0;
+	padding: 0;
+	padding-top: 0;
+	padding-left: 0;
+	padding-right: 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	overflow: hidden;
+}
+body {
+	height: 100%;
+	width: 100%;
+	margin-left: 0;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin: 0;
+	overflow: auto;
+
+}
+div.wrap {
+    display: table;
+    height: 300px;
+    width: 95%;
+    background: #eee;
+}
+
+div.cell {
+	height: 80%;
+	overflow: auto;
+    display: table-cell;
+    vertical-align: bottom;
+    padding: 5px;
+	overflow: auto;
+}
+
+div.cell span {
+    display:inline-block;
+    padding: 5px;
+}
